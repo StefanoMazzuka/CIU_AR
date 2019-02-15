@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">CIU_AR</string>
+
+    <string name="daisy">daisy</string>
+    <string name="dandelion">dandelion</string>
+    <string name="millenniumfalcon">millenniumfalcon</string>
+    <string name="roses">roses</string>
+    <string name="sunflowers">sunflowers</string>
+    <string name="tulips">tulips</string>
+
+    <string name="take_photo">Take photo</string>
+</resources>

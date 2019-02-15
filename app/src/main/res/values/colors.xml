@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="daisy">#5d940b</color>
+    <color name="dandelion">#0d31e1</color>
+    <color name="millenniumfalcon">#66e1b6</color>
+    <color name="roses">#ef0808</color>
+    <color name="sunflowers">#f9f509</color>
+    <color name="tulips">#620cb3</color>
+
+</resources>
