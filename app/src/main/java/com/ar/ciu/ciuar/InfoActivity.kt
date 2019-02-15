@@ -11,9 +11,9 @@ class InfoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_info)
         var result: String = intent.getStringExtra("result")
         var confidence: String = intent.getStringExtra("confidence")
-        val textViewResult : TextView = findViewById(R.id.result) as TextView
-        val textViewConfidence : TextView = findViewById(R.id.confidence) as TextView
-        textViewResult.setText(result)
-        textViewConfidence.setText(confidence)
+        val textViewResult : TextView = findViewById(R.id.result)
+        val textViewConfidence : TextView = findViewById(R.id.confidence)
+        textViewResult.text = result
+        textViewConfidence.text = confidence
     }
 }

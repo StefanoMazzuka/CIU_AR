@@ -141,5 +141,26 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra("result", result.result)
         intent.putExtra("confidence", confidence)
         startActivity(intent)
+        /*
+        textResult.text = result.result.toUpperCase()
+        layoutContainer.setBackgroundColor(getColorFromResult(result.result))
+        */
+    }
+
+    @Suppress("DEPRECATION")
+    private fun getColorFromResult(result: String): Int {
+        return if (result == getString(R.string.daisy)) {
+            resources.getColor(R.color.daisy)
+        } else if (result == getString(R.string.dandelion)) {
+            resources.getColor(R.color.dandelion)
+        } else if (result == getString(R.string.millenniumfalcon)) {
+            resources.getColor(R.color.millenniumfalcon)
+        } else if (result == getString(R.string.roses)) {
+            resources.getColor(R.color.roses)
+        } else if (result == getString(R.string.sunflowers)) {
+            resources.getColor(R.color.sunflowers)
+        } else {
+            resources.getColor(R.color.tulips)
+        }
     }
 }
