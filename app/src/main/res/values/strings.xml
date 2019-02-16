@@ -1,12 +1,14 @@
 <resources>
     <string name="app_name">CIU_AR</string>
 
-    <string name="daisy">daisy</string>
-    <string name="dandelion">dandelion</string>
-    <string name="millenniumfalcon">millenniumfalcon</string>
-    <string name="roses">roses</string>
-    <string name="sunflowers">sunflowers</string>
-    <string name="tulips">tulips</string>
+    <string name="caballo">Los portadores de la antorcha es una escultura en aluminio realizada por la artista estadounidense Anna Hyatt Huntington y donada a la ciudad de Madrid. Se encuentra, desde su inauguración el 15 de mayo de 1955, en la plaza de Ramón y Cajal, en el campus de Moncloa de la Universidad Complutense de Madrid «La Docta». A la inauguración asistieron la autora y su marido Archer Milton Huntington, fundador de la Hispanic Society of America.</string>
+    <string name="estatuaalexanderdubcek">Su padre fue un obrero emigrante en la Unión Soviética. Su educación la recibiría en la URSS. La familia regresó a Eslovaquia en 1938. Al año siguiente, Dubček ingresó en el Partido Comunista Checoslovaco. Durante la Segunda Guerra Mundial tomó parte en la resistencia contra la ocupación nazi. Demostró su capacidad de organización al protagonizar el levantamiento nacionalista eslovaco contra las tropas alemanas en el invierno de 1944 a 1945. Resultó herido en repetidas ocasiones.</string>
+    <string name="estatuacamilojosecela">Camilo José Cela y Trulock1​ (Iria Flavia, 11 de mayo de 1916-Madrid, 17 de enero de 2002) fue un escritor español. Autor prolífico y representante de la literatura de posguerra, se desempeñó como novelista, periodista, ensayista, editor de revistas literarias y conferenciante. Fue académico de la Real Academia Española y resultó galardonado, entre otros, con el Premio Príncipe de Asturias de las Letras en 1987, el Premio Nobel de Literatura en 1989 y el Premio Cervantes en 1995.</string>
+    <string name="estatuaomarjayyam">Ghiyath al-Din Abu l-Fath Omar ibn Ibrahim Jayyam Nishapurí (en persa: غیاث الدین ابو الفتح عمر بن ابراهیم خیام نیشاپوری ) u Omar Jayam (Nishapur, entonces capital selyúcida de Jorasán —actual Irán—, c. 18 de mayo de 1048 — ibídem, c. 4 de diciembre de 1131) fue un matemático, astrónomo y poeta persa.</string>
+    <string name="fdi">La Ingeniería Informática es la ciencia y la tecnología del diseño, implementación y mantenimiento de las componentes software y hardware que forman los modernos sistemas informáticos. Está sólidamente fundamentada en teorías y principios de computación, matemáticas, física e ingeniería y aplica todos ellos a la resolución de problemas técnicos que requieran el desarrollo de arquitecturas software, hardware y de red que presenten un equilibrio entre diferentes requisitos y objetivos contrapuestos.</string>
+    <string name="geografiaehistoria">La Facultad de Geografía e Historia de la Universidad Complutense de Madrid (UCM) es la facultad responsable de las titulaciones de la UCM relacionadas con los campos de conocimiento de historia, historia del arte, arqueología, geografía y musicología, organizados en las titulaciones oficales de grado, máster y doctorado. Está situada en el edificio de Filosofía y Letras B, la antigua Facultad de Ciencias Económicas y Empresariales, llevada al campus de Somosaguas en la década de los 60.</string>
+    <string name="multiusos">Aula multiusos</string>
+    <string name="rectorado">Rectorado</string>
 
     <string name="take_photo">Take photo</string>
 </resources>
