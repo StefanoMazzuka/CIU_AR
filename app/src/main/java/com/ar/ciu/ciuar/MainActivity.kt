@@ -135,6 +135,7 @@ class MainActivity : AppCompatActivity() {
         handler.post(runnable)
     }
 
+    //Prueba subida commit
     private fun showResult(result: Result) {
         val intent: Intent = Intent(applicationContext, InfoActivity::class.java)
         var confidence = result.confidence.toString()
