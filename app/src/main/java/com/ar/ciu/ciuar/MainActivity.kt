@@ -20,6 +20,8 @@ import com.ar.ciu.ciuar.utils.getCroppedBitmap
 import com.ar.ciu.ciuar.utils.getUriFromFilePath
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.File
+import android.text.SpannableString
+
 
 private const val REQUEST_PERMISSIONS = 1
 private const val REQUEST_TAKE_PICTURE = 2
@@ -119,7 +121,7 @@ class MainActivity : AppCompatActivity() {
         val photoBitmap = BitmapFactory.decodeFile(file.absolutePath)
         val croppedBitmap = getCroppedBitmap(photoBitmap)
         classifyAndShowResult(croppedBitmap)
-        imagePhoto.setImageBitmap(photoBitmap)
+        imagePhoto.setImageBitmap(photoBitmap) // Añadirmos la foto al layout
     }
 
     private fun classifyAndShowResult(croppedBitmap: Bitmap) {
@@ -137,31 +139,56 @@ class MainActivity : AppCompatActivity() {
 
     //Prueba subida commit
     private fun showResult(result: Result) {
-        val intent: Intent = Intent(applicationContext, InfoActivity::class.java)
-        var confidence = result.confidence.toString()
-        intent.putExtra("result", result.result)
-        intent.putExtra("confidence", confidence)
-        startActivity(intent)
-        /*
-        textResult.text = result.result.toUpperCase()
-        layoutContainer.setBackgroundColor(getColorFromResult(result.result))
-        */
+
+        var textR = ""
+        var textI = ""
+        if (result.result == "caballo") {
+            textR = "Los portadores de la antorcha"
+            textI = getString(R.string.caballo)
+        } else if (result.result == "estatuaalexanderdubcek") {
+            textR = "Alexander Dubček"
+            textI = getString(R.string.estatuaalexanderdubcek)
+        } else if (result.result == "estatuacamilojosecela") {
+            textR = "Camilo José Cela"
+            textI = getString(R.string.estatuacamilojosecela)
+        } else if (result.result == "estatuaomarjayyam") {
+            textR = "Omar Jayam"
+            textI = getString(R.string.estatuaomarjayyam)
+        } else if (result.result == "fdi") {
+            textR = "Facultad de Informática"
+            textI = getString(R.string.fdi)
+        } else if (result.result == "geografiaehistoria") {
+            textR = "Facultad de Geografía e Historia"
+            textI = getString(R.string.geografiaehistoria)
+        } else if (result.result == "multiusos") {
+            textR = "Aulas Multiusos"
+            textI = getString(R.string.multiusos)
+        } else {
+            textR = "Rectorado"
+            textI = getString(R.string.rectorado)
+        }
+
+        textResult.text = textR
+        val ss = SpannableString(textI)
+        ss.setSpan(MyLeadingMarginSpan2(10, 600), 0, ss.length, 0)
+        textInfo.text = ss
+        //layoutContainer.setBackgroundColor(getColorFromResult(result.result))
     }
 
-    @Suppress("DEPRECATION")
-    private fun getColorFromResult(result: String): Int {
-        return if (result == getString(R.string.daisy)) {
-            resources.getColor(R.color.daisy)
-        } else if (result == getString(R.string.dandelion)) {
-            resources.getColor(R.color.dandelion)
-        } else if (result == getString(R.string.millenniumfalcon)) {
-            resources.getColor(R.color.millenniumfalcon)
-        } else if (result == getString(R.string.roses)) {
-            resources.getColor(R.color.roses)
-        } else if (result == getString(R.string.sunflowers)) {
-            resources.getColor(R.color.sunflowers)
-        } else {
-            resources.getColor(R.color.tulips)
-        }
+/*@Suppress("DEPRECATION")
+prate fun getColorFromResult(result: String): Int {
+    return if (result == getString(R.string.daisy)) {
+        resources.getColor(R.color.daisy)
+    } else if (result == getString(R.string.dandelion)) {
+        resources.getColor(R.color.dandelion)
+    } else if (result == getString(R.string.millenniumfalcon)) {
+        resources.getColor(R.color.millenniumfalcon)
+    } else if (result == getString(R.string.roses)) {
+        resources.getColor(R.color.roses)
+    } else if (result == getString(R.string.sunflowers)) {
+        resources.getColor(R.color.sunflowers)
+    } else {
+        resources.getColor(R.color.tulips)
     }
+}*/
 }
