@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.v7.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layoutContainer"
     android:layout_width="match_parent"
@@ -8,23 +9,48 @@
     android:orientation="vertical"
     tools:context="com.ar.ciu.ciuar.MainActivity">
 
-    <ImageView
-        android:id="@+id/imagePhoto"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:scaleType="fitCenter"/>
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textResult"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/padding_result_button"
-        android:gravity="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        android:textColor="@android:color/white"
-        android:background="@android:color/transparent"
-        tools:text="@string/daisy"
-        tools:textColor="@android:color/black"/>
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/textResult"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+                <TextView
+                    android:id="@+id/textInfo"
+                    android:text="@string/fdi"
+                    android:textSize="18.0sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:id="@+id/imagePhoto"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:rotation="90"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_photo_camera_white_24dp" />
+            </RelativeLayout>
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+    </ScrollView>
+
+</android.support.v7.widget.LinearLayoutCompat>
