@@ -10,5 +10,12 @@
     <string name="multiusos">Aula multiusos</string>
     <string name="rectorado">Rectorado</string>
 
+    <string name="opcion_menu_mapa">Mapa CIU</string>
+    <string name="opcion_menu_monumentos">Monumentos</string>
+    <string name="opcion_menu_historia">Historia</string>
+    <string name="opcion_menu_reconocer">Reconocer</string>
+    <string name="opcion_menu_ajustes">Ajustes</string>
+    <string name="opcion_menu_contacto">Contacto</string>
+
     <string name="take_photo">Take photo</string>
 </resources>
