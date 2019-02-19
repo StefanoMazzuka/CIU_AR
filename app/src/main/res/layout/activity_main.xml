@@ -1,56 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.LinearLayoutCompat
+<android.support.v4.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layoutContainer"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.ar.ciu.ciuar.MainActivity">
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
-    <ScrollView
+    <include
+        layout="@layout/app_bar_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"/>
 
-        <android.support.v7.widget.LinearLayoutCompat
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/activity_main_drawer"/>
 
-            <TextView
-                android:id="@+id/textResult"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:paddingBottom="10dp"
-                android:paddingTop="10dp"
-                android:textSize="24sp"
-                android:textStyle="bold" />
 
-            <RelativeLayout
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp">
-                <TextView
-                    android:id="@+id/textInfo"
-                    android:text="@string/fdi"
-                    android:textSize="18.0sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
 
-                <ImageView
-                    android:id="@+id/imagePhoto"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:rotation="90"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_photo_camera_white_24dp" />
-            </RelativeLayout>
+</android.support.v4.widget.DrawerLayout>
 
-        </android.support.v7.widget.LinearLayoutCompat>
 
-    </ScrollView>
 
-</android.support.v7.widget.LinearLayoutCompat>
+
