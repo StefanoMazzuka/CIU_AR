@@ -223,22 +223,22 @@ prate fun getColorFromResult(result: String): Int {
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_camera -> {
-                // Handle the camera action
-            }
-            R.id.nav_gallery -> {
-
-            }
-            R.id.nav_slideshow -> {
-
-            }
             R.id.takaPhoto -> {
-                takePhoto()
+            takePhoto()
             }
-            R.id.nav_share -> {
+            R.id.map -> {
 
             }
-            R.id.nav_send -> {
+            R.id.monuments -> {
+
+            }
+            R.id.history -> {
+
+            }
+            R.id.settings -> {
+
+            }
+            R.id.contact -> {
 
             }
         }

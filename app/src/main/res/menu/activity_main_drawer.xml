@@ -6,19 +6,19 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/takaPhoto"
-            android:icon="@drawable/ic_photo_camera_white_24dp"
+            android:icon="@drawable/ic_eye"
             android:title="Reconocer" />
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_photo_camera_white_24dp"
+            android:id="@+id/map"
+            android:icon="@drawable/ic_map"
             android:title="Mapa" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_photo_camera_white_24dp"
+            android:id="@+id/monuments"
+            android:icon="@drawable/ic_monument"
             android:title="Monumentos" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_photo_camera_white_24dp"
+            android:id="@+id/history"
+            android:icon="@drawable/ic_history"
             android:title="Historia" />
 
     </group>
@@ -26,12 +26,12 @@
     <item android:title="Opciones">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_photo_camera_white_24dp"
+                android:id="@+id/settings"
+                android:icon="@drawable/ic_settings"
                 android:title="Ajustes" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_photo_camera_white_24dp"
+                android:id="@+id/contact"
+                android:icon="@drawable/ic_contact"
                 android:title="Contacto" />
         </menu>
     </item>
