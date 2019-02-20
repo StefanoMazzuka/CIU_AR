@@ -47,7 +47,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     .setAction("Action", null).show()
         }
 
-
        val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
         )
@@ -89,7 +88,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun init() {
         createClassifier()
-        //takePhoto()
     }
 
     private fun createClassifier() {
@@ -115,20 +113,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             startActivityForResult(takePictureIntent, REQUEST_TAKE_PICTURE)
         }
     }
-
+/*
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.activity_main_menu, menu)
+        menuInflater.inflate(R.menu.activity_main_drawer, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return if (item.itemId == R.id.take_photo) {
+        return if (item.itemId == R.id.takaPhoto) {
             takePhoto()
             true
         } else {
             super.onOptionsItemSelected(item)
         }
-    }
+    }*/
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         val file = File(photoFilePath)
@@ -234,7 +232,7 @@ prate fun getColorFromResult(result: String): Int {
             R.id.nav_slideshow -> {
 
             }
-            R.id.nav_manage -> {
+            R.id.takaPhoto -> {
                 takePhoto()
             }
             R.id.nav_share -> {
@@ -248,5 +246,4 @@ prate fun getColorFromResult(result: String): Int {
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
-
 }
