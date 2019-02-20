@@ -10,5 +10,22 @@
     <string name="multiusos">Aula multiusos</string>
     <string name="rectorado">Rectorado</string>
 
+    <string name="opcion_menu_mapa">Mapa CIU</string>
+    <string name="opcion_menu_monumentos">Monumentos</string>
+    <string name="opcion_menu_historia">Historia</string>
+    <string name="opcion_menu_reconocer">Reconocer</string>
+    <string name="opcion_menu_ajustes">Ajustes</string>
+    <string name="opcion_menu_contacto">Contacto</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Proyecto CIUAR</string>
+    <string name="nav_header_subtitle">Steffano y arturo</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
     <string name="take_photo">Take photo</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

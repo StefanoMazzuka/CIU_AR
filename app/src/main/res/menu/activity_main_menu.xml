@@ -7,4 +7,22 @@
         android:icon="@drawable/ic_photo_camera_white_24dp"
         android:title="@string/take_photo"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/opcion_mapa_ciu"
+        android:title="@string/opcion_menu_mapa" />
+    <item
+        android:id="@+id/opcion_monumentos"
+        android:title="@string/opcion_menu_monumentos" />
+    <item
+        android:id="@+id/opcion_historia"
+        android:title="@string/opcion_menu_historia" />
+    <item
+        android:id="@+id/opcion_reconocer"
+        android:title="@string/opcion_menu_reconocer" />
+    <item
+        android:id="@+id/opcion_ajustes"
+        android:title="@string/opcion_menu_ajustes" />
+    <item
+        android:id="@+id/opcion_contacto"
+        android:title="@string/opcion_menu_contacto" />
 </menu>
