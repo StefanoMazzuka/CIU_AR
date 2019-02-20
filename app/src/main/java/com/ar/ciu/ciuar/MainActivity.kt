@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun init() {
         createClassifier()
-        takePhoto()
+        //takePhoto()
     }
 
     private fun createClassifier() {
@@ -235,7 +235,7 @@ prate fun getColorFromResult(result: String): Int {
 
             }
             R.id.nav_manage -> {
-
+                takePhoto()
             }
             R.id.nav_share -> {
 
