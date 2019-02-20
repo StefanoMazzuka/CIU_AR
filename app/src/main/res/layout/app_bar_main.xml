@@ -17,7 +17,54 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.PopupOverlay" >
+
+            <TextView
+                android:id="@+id/headerText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textAppearance="@android:style/TextAppearance.Theme"
+                android:gravity="center"
+                android:textColor="@android:color/white" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:gravity="end"
+                android:src="@drawable/ic_photo_camera_white_24dp" />
+<!--
+            <menu
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto">
+
+                <item android:id="@+id/take_photo"
+                    android:icon="@drawable/ic_photo_camera_white_24dp"
+                    android:title="@string/take_photo"
+                    app:showAsAction="ifRoom" />
+                <item
+                    android:id="@+id/opcion_mapa_ciu"
+                    android:title="@string/opcion_menu_mapa" />
+                <item
+                    android:id="@+id/opcion_monumentos"
+                    android:title="@string/opcion_menu_monumentos" />
+                <item
+                    android:id="@+id/opcion_historia"
+                    android:title="@string/opcion_menu_historia" />
+                <item
+                    android:id="@+id/opcion_reconocer"
+                    android:title="@string/opcion_menu_reconocer" />
+                <item
+                    android:id="@+id/opcion_ajustes"
+                    android:title="@string/opcion_menu_ajustes" />
+                <item
+                    android:id="@+id/opcion_contacto"
+                    android:title="@string/opcion_menu_contacto" />
+            </menu>
+-->
+        </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
 

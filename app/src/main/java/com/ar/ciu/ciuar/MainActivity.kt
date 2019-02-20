@@ -88,6 +88,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun init() {
         createClassifier()
+        //takePhoto()
     }
 
     private fun createClassifier() {
