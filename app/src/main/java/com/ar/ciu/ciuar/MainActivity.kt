@@ -29,7 +29,6 @@ import java.io.File
 import android.text.SpannableString
 import kotlinx.android.synthetic.main.app_bar_main.*
 
-
 private const val REQUEST_PERMISSIONS = 1
 private const val REQUEST_TAKE_PICTURE = 2
 
@@ -48,7 +47,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     .setAction("Action", null).show()
         }
 
-        val toggle = ActionBarDrawerToggle(
+
+       val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
         )
         drawer_layout.addDrawerListener(toggle)
