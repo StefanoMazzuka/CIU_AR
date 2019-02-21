@@ -14,10 +14,8 @@ import android.support.design.widget.Snackbar
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.GravityCompat
-import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
-import android.view.Menu
 import android.view.MenuItem
 import com.ar.ciu.ciuar.classifier.*
 import com.ar.ciu.ciuar.classifier.tensorflow.ImageClassifierFactory
@@ -28,6 +26,8 @@ import kotlinx.android.synthetic.main.content_main.*
 import java.io.File
 import android.text.SpannableString
 import kotlinx.android.synthetic.main.app_bar_main.*
+
+
 
 private const val REQUEST_PERMISSIONS = 1
 private const val REQUEST_TAKE_PICTURE = 2
@@ -228,10 +228,12 @@ prate fun getColorFromResult(result: String): Int {
             takePhoto()
             }
             R.id.map -> {
-
+                val intent = Intent(this, Map::class.java)
+                startActivity(intent)
             }
             R.id.monuments -> {
-
+                val intent = Intent(this, Monuments::class.java)
+                startActivity(intent)
             }
             R.id.history -> {
 

@@ -3,6 +3,7 @@
     package="com.ar.ciu.ciuar">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -31,8 +32,14 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <activity android:name=".TestActivity" />
-        <activity android:name=".InfoActivity"></activity>
+        <activity android:name=".Map" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBKRruUfpwdPKXu5eECQkraEdDFTS8wYuQ" />
+
+        <!-- AIzaSyA2YjNnhYkUF58paOD_6DvAd9rQkkX2hko -->
+        <activity android:name=".Monuments"></activity>
     </application>
 
 </manifest>
