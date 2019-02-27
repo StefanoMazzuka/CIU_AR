@@ -61,9 +61,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
         // Write a message to the database
-        //val database = FirebaseDatabase.getInstance()
-        //val myRef = database.getReference("message")
-        //myRef.setValue("Hello, World!")
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.getReference("message")
+        myRef.setValue("Hello, World!")
+        //val id = myRef.push().key
+
+        //myRef.collection("chat").child("messages").setValue("1")
 
         //Fin de database
 
