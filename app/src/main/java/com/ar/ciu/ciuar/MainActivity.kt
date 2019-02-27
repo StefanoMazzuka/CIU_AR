@@ -26,6 +26,10 @@ import kotlinx.android.synthetic.main.content_main.*
 import java.io.File
 import android.text.SpannableString
 import kotlinx.android.synthetic.main.app_bar_main.*
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+
+
 
 
 
@@ -55,8 +59,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         nav_view.setNavigationItemSelectedListener(this)
 
+
+        // Write a message to the database
+        //val database = FirebaseDatabase.getInstance()
+        //val myRef = database.getReference("message")
+        //myRef.setValue("Hello, World!")
+
+        //Fin de database
+
         checkPermissions()
     }
+
+
 
     private fun checkPermissions() {
         if (arePermissionsAlreadyGranted()) {
