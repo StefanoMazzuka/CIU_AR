@@ -25,12 +25,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import java.io.File
 import android.text.SpannableString
+import android.util.Log
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-
-
-
 
 
 private const val REQUEST_PERMISSIONS = 1
@@ -64,14 +61,25 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("message")
         myRef.setValue("Hello, World!")
-        //val id = myRef.push().key
 
-        //myRef.collection("chat").child("messages").setValue("1")
+        // Read from the database
+        myRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                val value = dataSnapshot.getValue(String::class.java)
+                Log.d("KotlinActivity", "Value is: $value")
+            }
 
-        //Fin de database
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w("KotlinActivity", "Failed to read value.", error.toException())
+            }
+        })
 
-        checkPermissions()
+        //checkPermissions()
     }
+
 
 
 
