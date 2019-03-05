@@ -58,9 +58,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
         // Write a message to the database
-        val database = FirebaseDatabase.getInstance()
+       /* val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("message")
-        myRef.setValue("Hello, World!")
+        myRef.setValue("Hello, Worldse!")
 
         // Read from the database
         myRef.addValueEventListener(object : ValueEventListener {
@@ -75,13 +75,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 // Failed to read value
                 Log.w("KotlinActivity", "Failed to read value.", error.toException())
             }
-        })
+        })*/
 
-        //checkPermissions()
+        checkPermissions()
     }
-
-
-
 
     private fun checkPermissions() {
         if (arePermissionsAlreadyGranted()) {
@@ -184,38 +181,39 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     //Prueba subida commit
     private fun showResult(result: Result) {
 
-        var textR = ""
-        var textI = ""
-        if (result.result == "caballo") {
-            textR = "Los portadores de la antorcha"
-            textI = getString(R.string.caballo)
-        } else if (result.result == "estatuaalexanderdubcek") {
-            textR = "Alexander Dubček"
-            textI = getString(R.string.estatuaalexanderdubcek)
-        } else if (result.result == "estatuacamilojosecela") {
-            textR = "Camilo José Cela"
-            textI = getString(R.string.estatuacamilojosecela)
-        } else if (result.result == "estatuaomarjayyam") {
-            textR = "Omar Jayam"
-            textI = getString(R.string.estatuaomarjayyam)
-        } else if (result.result == "fdi") {
-            textR = "Facultad de Informática"
-            textI = getString(R.string.fdi)
-        } else if (result.result == "geografiaehistoria") {
-            textR = "Facultad de Geografía e Historia"
-            textI = getString(R.string.geografiaehistoria)
-        } else if (result.result == "multiusos") {
-            textR = "Aulas Multiusos"
-            textI = getString(R.string.multiusos)
-        } else {
-            textR = "Rectorado"
-            textI = getString(R.string.rectorado)
+        var monumentID = when {
+            result.result == "estatuaalexanderdubcek" -> "alexander"
+            result.result == "caballo" -> "antorcha"
+            result.result == "estatuacamilojosecela" -> "camilo"
+            result.result == "fdi" -> "fdi"
+            result.result == "geografiaehistoria" -> "geografia"
+            result.result == "multiusos" -> "multiusos"
+            result.result == "estatuaomarjayyam" -> "omar"
+            else -> "rectorado"
         }
 
-        textResult.text = textR
-        val ss = SpannableString(textI)
-        ss.setSpan(MyLeadingMarginSpan2(10, 600), 0, ss.length, 0)
-        textInfo.text = ss
+        var ref = FirebaseDatabase.getInstance().getReference("monuments")
+        ref.child(monumentID).addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(ds: DataSnapshot) {
+                var monument = Monument()
+                monument.audio = ds.child("audio").getValue(String::class.java).toString()
+                monument.author = ds.child("autor").getValue(String::class.java).toString()
+                monument.description = ds.child("descripcion").getValue(String::class.java).toString()
+                monument.buildingDate = ds.child("fechaConstrucción").getValue(String::class.java).toString()
+                monument.img = ds.child("imagen").getValue(String::class.java).toString()
+                monument.title = ds.child("titulo").getValue(String::class.java).toString()
+                monument.lastModification = ds.child("ultimaModificacion").getValue(String::class.java).toString()
+
+                textResult.text = monument.title
+                val ss = SpannableString(monument.description)
+                ss.setSpan(MyLeadingMarginSpan2(10, 600), 0, ss.length, 0)
+                textInfo.text = ss
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w("KotlinActivity", "Failed to read value.", error.toException())
+            }
+        })
         //layoutContainer.setBackgroundColor(getColorFromResult(result.result))
     }
 
