@@ -29,10 +29,8 @@ import android.util.Log
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
-
 private const val REQUEST_PERMISSIONS = 1
 private const val REQUEST_TAKE_PICTURE = 2
-
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
 
     private val handler = Handler()
@@ -55,27 +53,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
-
-
-        // Write a message to the database
-       /* val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference("message")
-        myRef.setValue("Hello, Worldse!")
-
-        // Read from the database
-        myRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                val value = dataSnapshot.getValue(String::class.java)
-                Log.d("KotlinActivity", "Value is: $value")
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                // Failed to read value
-                Log.w("KotlinActivity", "Failed to read value.", error.toException())
-            }
-        })*/
 
         checkPermissions()
     }
