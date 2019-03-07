@@ -211,7 +211,7 @@ prate fun getColorFromResult(result: String): Int {
     }
 }*/
 
-    //Menu
+    // Menu
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
