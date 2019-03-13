@@ -4,31 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Monuments">
+    tools:context=".Monument">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-                <android.support.v7.widget.LinearLayoutCompat
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/image_name"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            />
-                        <ImageView
-                            android:id="@+id/image_view"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp" />
-
-                </android.support.v7.widget.LinearLayoutCompat>
-
-        </ScrollView>
-
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/monumentsRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
