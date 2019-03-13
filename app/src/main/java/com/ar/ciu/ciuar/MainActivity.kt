@@ -176,7 +176,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 monument.audio = ds.child("audio").getValue(String::class.java).toString()
                 monument.author = ds.child("autor").getValue(String::class.java).toString()
                 monument.description = ds.child("descripcion").getValue(String::class.java).toString()
-                monument.buildingDate = ds.child("fechaConstrucción").getValue(String::class.java).toString()
+                monument.buildingDate = ds.child("fechaConstruccion").getValue(String::class.java).toString()
                 monument.img = ds.child("imagen").getValue(String::class.java).toString()
                 monument.title = ds.child("titulo").getValue(String::class.java).toString()
                 monument.lastModification = ds.child("ultimaModificacion").getValue(String::class.java).toString()
