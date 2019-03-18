@@ -31,7 +31,7 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 
 private const val REQUEST_PERMISSIONS = 1
 private const val REQUEST_TAKE_PICTURE = 2
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private val handler = Handler()
     private lateinit var classifier: Classifier
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     .setAction("Action", null).show()
         }
 
-       val toggle = ActionBarDrawerToggle(
+        val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
         )
         drawer_layout.addDrawerListener(toggle)
@@ -55,6 +55,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         nav_view.setNavigationItemSelectedListener(this)
 
         checkPermissions()
+
+        //imageButton.setOnClickListener(R.layout.app_bar_main)
     }
 
     private fun checkPermissions() {
@@ -146,13 +148,32 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         runInBackground(
                 Runnable {
                     val result = classifier.recognizeImage(croppedBitmap)
-                    showResult(result)
+                    if (result.confidence >= 0.7) showResult(result)
+                    else showNotFound(result);
                 })
     }
 
     @Synchronized
     private fun runInBackground(runnable: Runnable) {
         handler.post(runnable)
+    }
+
+    private fun showNotFound(result: Result) {
+        var monumentID = when {
+            result.result == "estatuaalexanderdubcek" -> "la estatua de Alexander Dubcek"
+            result.result == "caballo" -> "la estatua de Los Portadores de la Antorcha"
+            result.result == "estatuacamilojosecela" -> "la estatua de Camilo José Cela"
+            result.result == "fdi" -> "la Facultad de Informática"
+            result.result == "geografiaehistoria" -> "la Facultad de Geografía e Historia"
+            result.result == "multiusos" -> "el edificio Multiusos"
+            result.result == "estatuaomarjayyam" -> "la estatua de Omar Jaymay"
+            else -> "rectorado"
+        }
+
+        textResult.text = "Ups..."
+        val ss = SpannableString("Lo siento, no estoy seguro que es esto pero creo que es" + monumentID + " en un " + result.confidence + "%")
+        ss.setSpan(MyLeadingMarginSpan2(10, 600), 0, ss.length, 0)
+        textInfo.text = ss
     }
 
     //Prueba subida commit
@@ -225,7 +246,7 @@ prate fun getColorFromResult(result: String): Int {
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.takaPhoto -> {
-            takePhoto()
+                takePhoto()
             }
             R.id.map -> {
                 val intent = Intent(this, Map::class.java)
@@ -249,4 +270,11 @@ prate fun getColorFromResult(result: String): Int {
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
+/*
+    override fun onClick(p0: View?) {
+        when (p0) {
+            is imageButton -> takePhoto()
+        }
+    }
+    */
 }

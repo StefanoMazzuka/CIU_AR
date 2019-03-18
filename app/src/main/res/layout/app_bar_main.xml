@@ -15,8 +15,8 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:layout_height="wrap_content"
+            android:background="@drawable/nav_bar"
             app:popupTheme="@style/AppTheme.PopupOverlay" >
 
             <TextView
@@ -24,17 +24,35 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="@string/app_name"
+                android:text="CIU Realidad Aumentada"
                 android:textAppearance="@android:style/TextAppearance.Theme"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/black" />
 
-            <ImageView
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="end" >
+
+            <ImageButton
+                android:id="@+id/imageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:gravity="end"
                 android:src="@drawable/ic_eye" />
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:gravity="end"
+                android:src="@drawable/escudofdi" />
+            </LinearLayout>
 <!--
             <menu
                 xmlns:android="http://schemas.android.com/apk/res/android"

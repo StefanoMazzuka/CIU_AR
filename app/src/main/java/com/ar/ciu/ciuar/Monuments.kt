@@ -36,7 +36,7 @@ class Monuments : AppCompatActivity() {
                     monuments.add(monument)
                 }
 
-                val adapter = MonumentsViewAdapter(monuments)
+                val adapter = MonumentsViewAdapter(monuments, this@Monuments)
                 recyclerView.adapter = adapter
             }
 
