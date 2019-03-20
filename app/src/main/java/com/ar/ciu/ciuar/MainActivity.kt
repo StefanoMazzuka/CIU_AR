@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         checkPermissions()
 
-        //imageButton.setOnClickListener(R.layout.app_bar_main)
+        imageButton.setOnClickListener { takePhoto() }
     }
 
     private fun checkPermissions() {
@@ -270,11 +270,4 @@ prate fun getColorFromResult(result: String): Int {
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
-/*
-    override fun onClick(p0: View?) {
-        when (p0) {
-            is imageButton -> takePhoto()
-        }
-    }
-    */
 }
