@@ -24,7 +24,7 @@
                 android:gravity="center"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:text="CIU AR"
+                android:text=""
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -41,8 +41,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="18.0sp"
-                    android:justificationMode="inter_word"
-                    />
+                    android:justificationMode="inter_word" />
 
                 <ImageView
                     android:id="@+id/imagePhoto"

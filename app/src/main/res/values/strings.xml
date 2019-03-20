@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">CIU_AR</string>
+    <string name="app_name">CIU AR</string>
+
+    <string name="monuments_desc">Preview de los monumentos hisóricos que verás durante el tour</string>
 
     <string name="opcion_menu_mapa">Mapa CIU</string>
     <string name="opcion_menu_monumentos">Monumentos</string>
