@@ -1,7 +1,6 @@
 package com.ar.ciu.ciuar
 
 class Monument {
-    var audio : String = ""
     var author : String = ""
     var description : String = ""
     var buildingDate : String = ""

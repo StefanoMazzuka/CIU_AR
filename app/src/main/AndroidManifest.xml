@@ -39,7 +39,8 @@
             android:value="AIzaSyBKRruUfpwdPKXu5eECQkraEdDFTS8wYuQ" />
 
         <!-- AIzaSyA2YjNnhYkUF58paOD_6DvAd9rQkkX2hko -->
-        <activity android:name=".Monuments"></activity>
+        <activity android:name=".MonumentsActivity" />
+        <activity android:name=".HistoryActivity"></activity>
     </application>
 
 </manifest>
