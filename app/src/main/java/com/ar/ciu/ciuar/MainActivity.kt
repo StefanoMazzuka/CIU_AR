@@ -9,14 +9,15 @@ import android.os.Bundle
 import android.os.Environment
 import android.os.Handler
 import android.provider.MediaStore
+import android.speech.tts.TextToSpeech
 import android.support.design.widget.NavigationView
-import android.support.design.widget.Snackbar
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
+import android.widget.LinearLayout
 import com.ar.ciu.ciuar.classifier.*
 import com.ar.ciu.ciuar.classifier.tensorflow.ImageClassifierFactory
 import com.ar.ciu.ciuar.utils.getCroppedBitmap
@@ -24,10 +25,10 @@ import com.ar.ciu.ciuar.utils.getUriFromFilePath
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import java.io.File
-import android.text.SpannableString
-import android.util.Log
-import com.google.firebase.database.*
+import android.widget.Toast
 import kotlinx.android.synthetic.main.app_bar_main.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 private const val REQUEST_PERMISSIONS = 1
 private const val REQUEST_TAKE_PICTURE = 2
@@ -36,35 +37,42 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private val handler = Handler()
     private lateinit var classifier: Classifier
     private var photoFilePath = ""
+    private lateinit var tts: TextToSpeech
+    private var toSpeak = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
+        checkPermissions()
 
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
         )
+
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
 
-        checkPermissions()
-
         imageButton.setOnClickListener { takePhoto() }
+
+        tts = TextToSpeech(applicationContext, TextToSpeech.OnInitListener { status ->
+            var loc = Locale("es")
+            if (status != TextToSpeech.ERROR) tts.language = loc
+        })
+
+        fab.setImageResource(R.drawable.ic_volume_on)
+        fab.setOnClickListener {
+            if (toSpeak == "") Toast.makeText(this, "No tengo nada que decir...", Toast.LENGTH_SHORT).show()
+            else if (tts.isSpeaking) tts.stop()
+            else tts.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null)
+        }
     }
 
     private fun checkPermissions() {
-        if (arePermissionsAlreadyGranted()) {
-            init()
-        } else {
-            requestPermissions()
-        }
+        if (arePermissionsAlreadyGranted()) init()
+        else requestPermissions()
     }
 
     private fun arePermissionsAlreadyGranted() =
@@ -89,7 +97,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun init() {
         createClassifier()
-        //takePhoto()
     }
 
     private fun createClassifier() {
@@ -145,11 +152,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun classifyAndShowResult(croppedBitmap: Bitmap) {
+        drawer_layout.setBackgroundResource(0)
         runInBackground(
                 Runnable {
                     val result = classifier.recognizeImage(croppedBitmap)
                     if (result.confidence >= 0.7) showResult(result)
-                    else showNotFound(result);
+                    else showNotFound(result)
                 })
     }
 
@@ -170,10 +178,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             else -> "rectorado"
         }
 
+        toSpeak = "Lo siento, no estoy segura de que es esto pero creo que es " + monumentID + " en un " + ((result.confidence * 100).toInt()) + "%"
         textResult.text = "Ups..."
-        val ss = SpannableString("Lo siento, no estoy seguro que es esto pero creo que es" + monumentID + " en un " + result.confidence + "%")
-        ss.setSpan(MyLeadingMarginSpan2(10, 600), 0, ss.length, 0)
-        textInfo.text = ss
+        authorLabel.text = ""
+        buildingDateLabel.text = ""
+        lastMonidification.text = ""
+        description.text =  toSpeak
     }
 
     //Prueba subida commit
@@ -190,26 +200,28 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             else -> "rectorado"
         }
 
-        var ref = FirebaseDatabase.getInstance().getReference("monuments")
-        ref.child(monumentID).addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(ds: DataSnapshot) {
-                var monument = Monument()
-                monument.audio = ds.child("audio").getValue(String::class.java).toString()
-                monument.author = ds.child("autor").getValue(String::class.java).toString()
-                monument.description = ds.child("descripcion").getValue(String::class.java).toString()
-                monument.buildingDate = ds.child("fechaConstruccion").getValue(String::class.java).toString()
-                monument.img = ds.child("imagen").getValue(String::class.java).toString()
-                monument.title = ds.child("titulo").getValue(String::class.java).toString()
-                monument.lastModification = ds.child("ultimaModificacion").getValue(String::class.java).toString()
-
+        var conn = Connection()
+        conn.getMonument(monumentID, object : FirebaseCallback {
+            override fun monument(monument: Monument) {
+                //Do what you need to do with your list
                 textResult.text = monument.title
-                val ss = SpannableString(monument.description)
-                ss.setSpan(MyLeadingMarginSpan2(10, 600), 0, ss.length, 0)
-                textInfo.text = ss
+                toSpeak = monument.description
+
+                authorLabel.text = "AUTOR:"
+                buildingDateLabel.text = "FECHA DE CREACIÓIN:"
+                lastMonidificationLabel.text = "FECHA REMODELACIÓN:"
+                author.text = monument.author
+                description.text = monument.description
+                buildingDate.text = monument.buildingDate
+                lastMonidification.text = monument.lastModification
             }
 
-            override fun onCancelled(error: DatabaseError) {
-                Log.w("KotlinActivity", "Failed to read value.", error.toException())
+            override fun monuments(list: ArrayList<Monument>) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun locations(list: ArrayList<Location>) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
         })
         //layoutContainer.setBackgroundColor(getColorFromResult(result.result))
@@ -253,11 +265,12 @@ prate fun getColorFromResult(result: String): Int {
                 startActivity(intent)
             }
             R.id.monuments -> {
-                val intent = Intent(this, Monuments::class.java)
+                val intent = Intent(this, MonumentsActivity::class.java)
                 startActivity(intent)
             }
             R.id.history -> {
-
+                val intent = Intent(this, HistoryActivity::class.java)
+                startActivity(intent)
             }
             R.id.settings -> {
 

@@ -19,44 +19,32 @@ class Map : AppCompatActivity() {
 
     lateinit var mapFragment: SupportMapFragment
     lateinit var googleMap: GoogleMap
-    var locations = arrayListOf<Location>()
     lateinit var dataBase: FirebaseDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map)
 
-        loadLocations()
+        var conn = Connection()
+        conn.getLocations(object : FirebaseCallback {
+            override fun locations(locations: ArrayList<Location>) {
+                //Do what you need to do with your list
+                displayMap(locations)
+            }
+
+            override fun monuments(list: ArrayList<Monument>) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun monument(monument: Monument) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+        })
 
         // Toast.makeText(this, l.lon.toString(), Toast.LENGTH_LONG).show()
     }
 
-    fun loadLocations() {
-        dataBase = FirebaseDatabase.getInstance()
-        var ref = dataBase.getReference("locations")
-        ref.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(ds: DataSnapshot) {
-
-                locations.clear()
-                for (l in ds.children) {
-                    var location = Location()
-                    location.name = l.child("ubicación").getValue(String::class.java).toString()
-                    location.lat = l.child("lat").getValue(Double::class.java).toString().toDouble()
-                    location.lon = l.child("lon").getValue(Double::class.java).toString().toDouble()
-                    locations.add(location)
-                }
-
-                // AQUI EL MAPS
-                displayMap()
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Log.w("KotlinActivity", "Failed to read value.", error.toException())
-            }
-        })
-    }
-
-    fun displayMap() {
+    fun displayMap(locations: ArrayList<Location>) {
         mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(OnMapReadyCallback {
             googleMap = it
