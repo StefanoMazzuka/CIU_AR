@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HistoryActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:weightSum="7">
+
+        <Button
+            android:id="@+id/increase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/increase_background"
+            android:text="Crecimiento de la Ciudad Universitaria"
+            android:textColor="#1b1b1b"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/war"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/war_background"
+            android:text="Guerra en la Ciudad Universitaria"
+            android:textColor="#1b1b1b"
+            android:textStyle="bold" />
+        <Button
+            android:id="@+id/introduction"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/introduction_background"
+            android:text="Historia"
+            android:textColor="#1b1b1b"
+            android:textStyle="bold" />
+        <Button
+            android:id="@+id/origin"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/origin_background"
+            android:text="Orígenes"
+            android:textColor="#1b1b1b"
+            android:textStyle="bold" />
+        <Button
+            android:id="@+id/firstPart"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/first_part_background"
+            android:text="Primera etapa (1927-1930)"
+            android:textColor="#1b1b1b"
+            android:textStyle="bold" />
+        <Button
+            android:id="@+id/secondPart"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/second_part_background"
+            android:text="Segunda etapa (1931-1936)"
+            android:textColor="#1b1b1b"
+            android:textStyle="bold" />
+        <Button
+            android:id="@+id/thirdPart"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/third_part_background"
+            android:text="Tercera etapa (La Reconstrucción)"
+            android:textColor="#1b1b1b"
+            android:textStyle="bold" />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
