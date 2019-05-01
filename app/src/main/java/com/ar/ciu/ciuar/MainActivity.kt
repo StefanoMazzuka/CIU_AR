@@ -1,6 +1,7 @@
 package com.ar.ciu.ciuar
 
 import android.Manifest
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -17,7 +18,6 @@ import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
-import android.widget.LinearLayout
 import com.ar.ciu.ciuar.classifier.*
 import com.ar.ciu.ciuar.classifier.tensorflow.ImageClassifierFactory
 import com.ar.ciu.ciuar.utils.getCroppedBitmap
@@ -122,20 +122,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             startActivityForResult(takePictureIntent, REQUEST_TAKE_PICTURE)
         }
     }
-/*
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.activity_main_drawer, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return if (item.itemId == R.id.takaPhoto) {
-            takePhoto()
-            true
-        } else {
-            super.onOptionsItemSelected(item)
-        }
-    }*/
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         val file = File(photoFilePath)
@@ -168,13 +154,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun showNotFound(result: Result) {
         var monumentID = when {
-            result.result == "estatuaalexanderdubcek" -> "la estatua de Alexander Dubcek"
-            result.result == "caballo" -> "la estatua de Los Portadores de la Antorcha"
-            result.result == "estatuacamilojosecela" -> "la estatua de Camilo José Cela"
+            result.result == "alexander" -> "la estatua de Alexander Dubcek"
+            result.result == "antorcha" -> "la estatua de Los Portadores de la Antorcha"
+            result.result == "camilo" -> "la estatua de Camilo José Cela"
             result.result == "fdi" -> "la Facultad de Informática"
-            result.result == "geografiaehistoria" -> "la Facultad de Geografía e Historia"
+            result.result == "geografia" -> "la Facultad de Geografía e Historia"
             result.result == "multiusos" -> "el edificio Multiusos"
-            result.result == "estatuaomarjayyam" -> "la estatua de Omar Jaymay"
+            result.result == "omar" -> "la estatua de Omar Jaymay"
             else -> "rectorado"
         }
 
@@ -182,24 +168,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         textResult.text = "Ups..."
         authorLabel.text = ""
         buildingDateLabel.text = ""
+        lastMonidificationLabel.text = ""
+        author.text = ""
+        buildingDate.text = ""
         lastMonidification.text = ""
+
         description.text =  toSpeak
     }
 
-    //Prueba subida commit
     private fun showResult(result: Result) {
 
-        var monumentID = when {
-            result.result == "estatuaalexanderdubcek" -> "alexander"
-            result.result == "caballo" -> "antorcha"
-            result.result == "estatuacamilojosecela" -> "camilo"
-            result.result == "fdi" -> "fdi"
-            result.result == "geografiaehistoria" -> "geografia"
-            result.result == "multiusos" -> "multiusos"
-            result.result == "estatuaomarjayyam" -> "omar"
-            else -> "rectorado"
-        }
-
+        var monumentID = result.result
         var conn = Connection()
         conn.getMonument(monumentID, object : FirebaseCallback {
             override fun monument(monument: Monument) {
@@ -224,28 +203,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
         })
-        //layoutContainer.setBackgroundColor(getColorFromResult(result.result))
     }
-
-/*@Suppress("DEPRECATION")
-prate fun getColorFromResult(result: String): Int {
-    return if (result == getString(R.string.daisy)) {
-        resources.getColor(R.color.daisy)
-    } else if (result == getString(R.string.dandelion)) {
-        resources.getColor(R.color.dandelion)
-    } else if (result == getString(R.string.millenniumfalcon)) {
-        resources.getColor(R.color.millenniumfalcon)
-    } else if (result == getString(R.string.roses)) {
-        resources.getColor(R.color.roses)
-    } else if (result == getString(R.string.sunflowers)) {
-        resources.getColor(R.color.sunflowers)
-    } else {
-        resources.getColor(R.color.tulips)
-    }
-}*/
 
     // Menu
-
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
@@ -272,15 +232,30 @@ prate fun getColorFromResult(result: String): Int {
                 val intent = Intent(this, HistoryActivity::class.java)
                 startActivity(intent)
             }
-            R.id.settings -> {
-
-            }
             R.id.contact -> {
-
+                displayContact()
             }
         }
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    private fun displayContact() {
+        // Initialize a new instance of
+        val contactView = AlertDialog.Builder(this@MainActivity)
+
+        // Set the alert dialog title
+        contactView.setTitle("Contacto")
+
+        // Display a message on alert dialog
+        contactView.setMessage("Autores: " + '\n' + "Stefano Mazzuka" + '\n' + "Arturo Marino Quintana" + '\n' + '\n'
+                + "Email:" + '\n' + "stefano.mazzuka@gmail.com" + '\n' + "arturomarino92@gmail.com")
+
+        // Finally, make the alert dialog using builder
+        val dialog: AlertDialog = contactView.create()
+
+        // Display the alert dialog on app interface
+        dialog.show()
     }
 }

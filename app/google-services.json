@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "534585978282",
+    "firebase_url": "https://ciuar-b9c29.firebaseio.com",
+    "project_id": "ciuar-b9c29",
+    "storage_bucket": "ciuar-b9c29.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:534585978282:android:2d2f0b541d6d80db",
+        "android_client_info": {
+          "package_name": "com.ar.ciu.ciuar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "534585978282-i1h8jimarjo3itjmsrbdvk78ejrbk84a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ar.ciu.ciuar",
+            "certificate_hash": "c681622e5357bcbe5ac8f3334e60c6dffbff6604"
+          }
+        },
+        {
+          "client_id": "534585978282-n9lm9ok0n9phkii02otenq17gq9rubb1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZ9vfmljoRM4DMDXalx_I80hkihGueoR8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "534585978282-n9lm9ok0n9phkii02otenq17gq9rubb1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
