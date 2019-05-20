@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="CIU Realidad Aumentada"
+                android:text="Ciudad Universitaria Tour"
                 android:textAppearance="@android:style/TextAppearance.Theme"
                 android:textColor="@android:color/black" />
 

@@ -142,7 +142,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         runInBackground(
                 Runnable {
                     val result = classifier.recognizeImage(croppedBitmap)
-                    if (result.confidence >= 0.7) showResult(result)
+                    if (result.confidence >= 0.85) showResult(result)
                     else showNotFound(result)
                 })
     }
@@ -164,9 +164,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             else -> "rectorado"
         }
 
-        toSpeak = "Lo siento, no estoy segura de que es esto pero creo que es " + monumentID + " en un " + ((result.confidence * 100).toInt()) + "%"
+        toSpeak = "Lo siento, no estoy segura, pero creo que es " + monumentID + " en un " + ((result.confidence * 100).toInt()) + "%"
         textResult.text = "Ups..."
-        authorLabel.text = ""
+        authorLabel.text = "Desconocido"
         buildingDateLabel.text = ""
         lastMonidificationLabel.text = ""
         author.text = ""
@@ -174,6 +174,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         lastMonidification.text = ""
 
         description.text =  toSpeak
+        percentage.text = "Precisión de la clasificación: " + ((result.confidence * 100).toInt()) + "%"
     }
 
     private fun showResult(result: Result) {
@@ -193,6 +194,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 description.text = monument.description
                 buildingDate.text = monument.buildingDate
                 lastMonidification.text = monument.lastModification
+                percentage.text = "Precisión de la clasificación: " + ((result.confidence * 100).toInt()) + "%"
             }
 
             override fun monuments(list: ArrayList<Monument>) {
