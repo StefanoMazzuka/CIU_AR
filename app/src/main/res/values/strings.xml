@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CIU AR</string>
+    <string name="app_name">CIU TOUR</string>
 
     <string name="monuments_desc">Preview de los monumentos hisóricos que verás durante el tour</string>
 
@@ -12,16 +12,11 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Proyecto CIU AR</string>
+    <string name="nav_header_title">Proyecto CIU TOUR</string>
     <string name="nav_header_subtitle">Stefano y Arturo</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
     <string name="take_photo">Take photo</string>
 
-    <!-- History -->
-    <string name="history_increase">Hola<a href="https://www.google.com">Crecimiento de la Ciudad Universitaria</a></string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
